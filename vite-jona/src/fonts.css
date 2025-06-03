@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'MiFuente1';
+  src: url('.C:/Users/user/OneDrive/Documentos/GitHub/Portfolio-Jona/vite-jona/src/assets/fonts/Glory Migella Regular 1.ttf') format('ttf'),
+       url('.C:/Users/user/OneDrive/Documentos/GitHub/Portfolio-Jona/vite-jona/src/assets/fonts/Glory Migella Regular 1.ttf') format('ttf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MiFuente2';
+  src: url('.C:/Users/user/OneDrive/Documentos/GitHub/Portfolio-Jona/vite-jona/src/assets/fonts/PlusJakartaSans-VariableFont_wght.ttf') format('ttf'),
+       url('.C:/Users/user/OneDrive/Documentos/GitHub/Portfolio-Jona/vite-jona/src/assets/fonts/PlusJakartaSans-VariableFont_wght.ttf') format('ttf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
