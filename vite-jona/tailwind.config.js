@@ -6,8 +6,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        miFuente1: ['Glory Migella Regular 1.ttf', 'sans-serif'], // cambia 'sans-serif' si querés
-        miFuente2: ['PlusJakartaSans-VariableFont_wght.ttfMiFuente2', 'serif'],
+        plus: ['PlusJakarta', 'sans-serif'],
+        migella: ['GloryMigella', 'cursive'],
       },
     },
   },
