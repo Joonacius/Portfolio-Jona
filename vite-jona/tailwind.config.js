@@ -1,7 +1,9 @@
-export default {
+// tailwind.config.js
+module.exports = {
+  darkMode: 'class',
   content: [
-    "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx}",
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -9,7 +11,10 @@ export default {
         plus: ['PlusJakarta', 'sans-serif'],
         migella: ['GloryMigella', 'cursive'],
       },
+      colors: {
+        darkBg: '#151515',
+      },
     },
   },
   plugins: [],
-}
+};
