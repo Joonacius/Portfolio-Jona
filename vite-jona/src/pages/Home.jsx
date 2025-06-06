@@ -63,7 +63,7 @@ function Home() {
         <div>CONTACT</div>
       </div>
 
-      {/* Título */}
+      {/* Título o mi Nombre presentacion */}
       <div className="relative h-screen">
         <p
           className="absolute font-migella"
