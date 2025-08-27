@@ -2,7 +2,7 @@ name: Deploy Vite site to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]  # ajusta si tu branch principal no es main
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -14,13 +14,13 @@ jobs:
           node-version: 18
           cache: 'npm'
       - run: npm install
-        working-directory: ./vite-jona   # 👈 instalar dependencias en la subcarpeta
+        working-directory: ./vite-jona
       - run: npm run build
-        working-directory: ./vite-jona   # 👈 hacer build en la subcarpeta
+        working-directory: ./vite-jona
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./vite-jona/dist          # 👈 subir la carpeta dist generada
-          
+          path: ./vite-jona/dist
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
