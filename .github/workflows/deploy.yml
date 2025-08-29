@@ -13,6 +13,7 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
+          cache-dependency-path: './vite-jona/package-lock.json'  # ← Esta línea es la clave
       - run: npm install
         working-directory: ./vite-jona
       - run: npm run build
