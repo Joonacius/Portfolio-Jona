@@ -87,7 +87,7 @@ function Works() {
       {/* Layout para Tablet */}
       <div className="hidden md:block lg:hidden min-h-screen">
         {/* Grid container para tablet - 2 columnas */}
-        <div className="grid grid-cols-2 gap-1 p-4 pt-20">
+        <div className="grid grid-cols-2 gap-2 p-4 pt-20">
           {projects.map(({ name, img }) => (
             <Link 
               key={name}
