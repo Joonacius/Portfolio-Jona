@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import Navbar from "../components/Navbar";
 import { ThemeContext } from "../context/ThemeContext";
+import { getImageUrl } from "../utils/imageHelper";
 import "swiper/css";
 import "../fonts.css";
 
@@ -14,7 +15,7 @@ function Home() {
   const slideElements = slides.flatMap((num, index) => [
     <SwiperSlide key={`img-${num}`}>
       <img
-        src={`/images/img${num}.jpg`}
+        src={getImageUrl(`img${num}.jpg`)}
         alt={`Slide ${num}`}
         className="w-full h-full object-cover"
       />
@@ -91,7 +92,7 @@ function Home() {
                 className="group flex-1 overflow-hidden transition-all duration-500 ease-in-out hover:flex-[2]"
               >
                 <img
-                  src={`/images/img${num}.jpg`}
+                  src={getImageUrl(`img${num}.jpg`)}
                   alt={`Imagen ${num}`}
                   className="w-full h-full object-cover transition-all duration-500 ease-in-out filter grayscale group-hover:grayscale-0"
                 />
@@ -156,7 +157,7 @@ function Home() {
                   className="group flex-1 overflow-hidden transition-all duration-500 ease-in-out hover:flex-[2]"
                 >
                   <img
-                    src={`/images/img${num}.jpg`}
+                    src={getImageUrl(`img${num}.jpg`)}
                     alt={`Imagen ${num}`}
                     className="w-full h-full object-cover transition-all duration-500 ease-in-out filter grayscale group-hover:grayscale-0"
                   />
@@ -242,7 +243,7 @@ function Home() {
     }}
   >
     <img
-      src="/images/hoverlg.jpg"
+      src={getImageUrl("hoverlg.jpg")}
       alt="Imagen en grilla"
       className="w-full h-full object-cover"
     />
@@ -265,7 +266,7 @@ function Home() {
         className="group flex-1 overflow-hidden transition-all duration-500 ease-in-out hover:flex-[2]"
       >
         <img
-          src={`/images/img${num}.jpg`}
+          src={getImageUrl(`img${num}.jpg`)}
           alt={`Imagen ${num}`}
           className="w-full h-full object-cover transition-all duration-500 ease-in-out filter grayscale group-hover:grayscale-0"
         />

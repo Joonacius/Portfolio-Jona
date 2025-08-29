@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import { useState } from "react";
+import { getImageUrl } from "../utils/imageHelper";
 
 function Hall() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -38,11 +39,11 @@ function Hall() {
       <div
         className="hidden md:block absolute z-20 w-[40%] h-[1078px] cursor-pointer transition-all duration-300 hover:opacity-90"
         style={{ top: "67px", left: "0%" }}
-        onClick={() => openModal("/images/hall/hall1.jpg", "hall1")}
+        onClick={() => openModal(getImageUrl("hall/hall1.jpg"), "hall1")}
       >
         <div className="w-full h-full p-[1px] bg-black dark:bg-white">
           <img
-            src="/images/hall/hall1.jpg"
+            src={getImageUrl("hall/hall1.jpg")}
             alt="hall1"
             className="w-full h-full object-cover"
           />
@@ -53,11 +54,11 @@ function Hall() {
       <div
         className="hidden md:block absolute z-20 w-[40%] h-[539px] cursor-pointer transition-all duration-300 hover:opacity-90"
         style={{ top: "606px", left: "60%" }}
-        onClick={() => openModal("/images/hall/hall2.jpg", "hall2")}
+        onClick={() => openModal(getImageUrl("hall/hall2.jpg"), "hall2")}
       >
         <div className="w-full h-full p-[1px] bg-black dark:bg-white">
           <img
-            src="/images/hall/hall2.jpg"
+            src={getImageUrl("hall/hall2.jpg")}
             alt="hall2"
             className="w-full h-full object-cover"
           />
@@ -70,11 +71,11 @@ function Hall() {
         {/* Imagen 1 - Móvil */}
         <div 
           className="w-full cursor-pointer transition-all duration-300 hover:opacity-90"
-          onClick={() => openModal("/images/hall/hall1.jpg", "hall1")}
+          onClick={() => openModal(getImageUrl("hall/hall1.jpg"), "hall1")}
         >
           <div className="aspect-[4/5] w-full p-[1px] bg-black dark:bg-white">
             <img
-              src="/images/hall/hall1.jpg"
+              src={getImageUrl("hall/hall1.jpg")}
               alt="hall1"
               className="w-full h-full object-cover"
             />
@@ -87,11 +88,11 @@ function Hall() {
         {/* Imagen 2 - Móvil */}
         <div 
           className="w-full cursor-pointer transition-all duration-300 hover:opacity-90"
-          onClick={() => openModal("/images/hall/hall2.jpg", "hall2")}
+          onClick={() => openModal(getImageUrl("hall/hall2.jpg"), "hall2")}
         >
           <div className="aspect-[4/3] w-full p-[1px] bg-black dark:bg-white">
             <img
-              src="/images/hall/hall2.jpg"
+              src={getImageUrl("hall/hall2.jpg")}
               alt="hall2"
               className="w-full h-full object-cover"
             />
@@ -109,11 +110,11 @@ function Hall() {
           {/* Imagen 1 - Tablet */}
           <div 
             className="col-span-1 cursor-pointer transition-all duration-300 hover:opacity-90"
-            onClick={() => openModal("/images/hall/hall1.jpg", "hall1")}
+            onClick={() => openModal(getImageUrl("hall/hall1.jpg"), "hall1")}
           >
             <div className="aspect-[3/4] w-full p-[1px] bg-black dark:bg-white">
               <img
-                src="/images/hall/hall1.jpg"
+                src={getImageUrl("hall/hall1.jpg")}
                 alt="hall1"
                 className="w-full h-full object-cover"
               />
@@ -123,11 +124,11 @@ function Hall() {
           {/* Imagen 2 - Tablet */}
           <div 
             className="col-span-1 mt-24 cursor-pointer transition-all duration-300 hover:opacity-90"
-            onClick={() => openModal("/images/hall/hall2.jpg", "hall2")}
+            onClick={() => openModal(getImageUrl("hall/hall2.jpg"), "hall2")}
           >
             <div className="aspect-[4/3] w-full p-[1px] bg-black dark:bg-white">
               <img
-                src="/images/hall/hall2.jpg"
+                src={getImageUrl("hall/hall2.jpg")}
                 alt="hall2"
                 className="w-full h-full object-cover"
               />
