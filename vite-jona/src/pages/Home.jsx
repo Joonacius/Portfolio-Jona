@@ -31,7 +31,7 @@ function Home() {
       {/* Navbar */}
       <Navbar />
 
-      {/* ------------------ MOBILE (320px - 767px) ------------------ */}
+      {/* ------------------ MOBILE (320px - 767px) - SIN CAMBIOS ------------------ */}
       <div className="md:hidden relative w-full min-h-screen overflow-hidden">
 
         {/* Líneas de la grilla MOBILE */}
@@ -102,7 +102,7 @@ function Home() {
         </div>
       </div>
 
-      {/* ------------------ TABLET (768px - 1023px) ------------------ */}
+      {/* ------------------ TABLET (768px - 1023px) - SIN CAMBIOS ------------------ */}
       <div className="hidden md:block lg:hidden relative min-h-screen">
         {/* Líneas de la cuadrícula TABLET */}
         <div className="absolute inset-0 z-20">
@@ -168,110 +168,114 @@ function Home() {
         </div>
       </div>
 
-{/* ------------------ DESKTOP (1024px+) ------------------ */}
-<div className="hidden lg:block relative min-h-[1747px]">
-      {/* Líneas de la cuadrícula DESKTOP */}
-      <div className="absolute inset-0 z-50 pointer-events-none">
-        <div className="absolute left-0 right-0 h-[1px] bg-black dark:bg-white" style={{ top: "67px" }} />
-        <div className="absolute left-0 right-0 h-[1px] bg-black dark:bg-white" style={{ top: "873px" }} />
-        <div className="absolute left-0 right-0 h-[1px] bg-black dark:bg-white" style={{ bottom: "67px" }} />
-        <div className="absolute top-0 bottom-0 w-[1px] bg-black dark:bg-white" style={{ left: "33.3333%" }} />
-        <div className="absolute top-0 bottom-0 w-[1px] bg-black dark:bg-white" style={{ left: "66.6666%" }} />
-      </div>
+{/* ------------------ DESKTOP (1024px+) - MODIFICADO ------------------ */}
+<div className="hidden lg:block">
+  {/* Contenedor centrado con ancho fijo */}
+  <div className="relative w-[1920px] min-h-[1747px] mx-auto">
+    {/* Líneas de la cuadrícula DESKTOP con posiciones fijas */}
+    <div className="absolute inset-0 z-50 pointer-events-none">
+      <div className="absolute left-0 right-0 h-[1px] bg-black dark:bg-white" style={{ top: "67px" }} />
+      <div className="absolute left-0 right-0 h-[1px] bg-black dark:bg-white" style={{ top: "873px" }} />
+      <div className="absolute left-0 right-0 h-[1px] bg-black dark:bg-white" style={{ bottom: "67px" }} />
+      {/* Columnas con pixeles fijos */}
+      <div className="absolute top-0 bottom-0 w-[1px] bg-black dark:bg-white" style={{ left: "640px" }} />
+      <div className="absolute top-0 bottom-0 w-[1px] bg-black dark:bg-white" style={{ left: "1280px" }} />
+    </div>
 
-      {/* Textos columna izquierda */}
-      <div 
-        className="absolute flex flex-col justify-between px-8"
-        style={{
-          left: "0",
-          width: "33.3333%",
-          top: "68px",
-          height: "calc(873px - 68px)"
-        }}
-      >
-        {/* Parte superior: Jonathan Calistro */}
-        <div>
-          <p className="font-migella text-[6vw] xl:text-[128px] leading-none">JONATHAN</p>
-          <p className="font-migella text-[6vw] xl:text-[128px] leading-none">CALISTRO</p>
-        </div>
-
-        {/* Parte inferior: Architecture... */}
-        <p className="font-plus text-black dark:text-white text-[2vw] xl:text-[33px] mb-6">
-          Architecture and Interior design
-        </p>
-      </div>
-
-  {/* Carrusel central */}
-  <div 
-    className="absolute overflow-hidden z-10"
-    style={{ 
-      left: "33.3333%", 
-      width: "33.3333%", 
-      top: "68px", 
-      height: "calc(873px - 68px)"
-    }}
-  >
-    <Swiper
-      modules={[Autoplay]}
-      autoplay={{ 
-        delay: 2000, 
-        disableOnInteraction: false,
-        pauseOnMouseEnter: false,
-        reverseDirection: false,
-        stopOnLastSlide: false
+    {/* Textos columna izquierda con ancho y tamaño de fuente fijos */}
+    <div 
+      className="absolute flex flex-col justify-between px-8"
+      style={{
+        left: "0",
+        width: "640px",
+        top: "68px",
+        height: "calc(873px - 68px)"
       }}
-      spaceBetween={0}
-      slidesPerView={1}
-      loop={true}
-      speed={1500}
-      allowTouchMove={false}
-      simulateTouch={false}
-      className="w-full h-full"
     >
-      {slideElements}
-    </Swiper>
-  </div>
-
-  {/* Imagen derecha inferior */}
-  <div 
-    className="group absolute overflow-hidden z-40"
-    style={{ 
-      left: "66.6666%", 
-      width: "33.3333%", 
-      top: "874px", 
-      bottom: "68px" 
-    }}
-  >
-    <img
-      src={getImageUrl("hoverlg.jpg")}
-      alt="Imagen en grilla"
-      className="w-full h-full object-cover"
-    />
-    <div className="absolute inset-0 bg-white dark:bg-darkBg transition-opacity duration-1000 opacity-100 group-hover:opacity-0 pointer-events-none z-10"></div>
-  </div>
-
-  {/* Imágenes columna izquierda - parte inferior */}
-  <div 
-    className="absolute flex flex-row overflow-hidden z-40"
-    style={{ 
-      left: "0", 
-      width: "33.3333%", 
-      top: "874px", 
-      bottom: "68px" 
-    }}
-  >
-    {[5, 6, 7].map((num) => (
-      <div
-        key={num}
-        className="group flex-1 overflow-hidden transition-all duration-500 ease-in-out hover:flex-[2]"
-      >
-        <img
-          src={getImageUrl(`img${num}.jpg`)}
-          alt={`Imagen ${num}`}
-          className="w-full h-full object-cover transition-all duration-500 ease-in-out filter grayscale group-hover:grayscale-0"
-        />
+      {/* Parte superior: Jonathan Calistro */}
+      <div>
+        <p className="font-migella text-[128px] leading-none">JONATHAN</p>
+        <p className="font-migella text-[128px] leading-none">CALISTRO</p>
       </div>
-    ))}
+
+      {/* Parte inferior: Architecture... */}
+      <p className="font-plus text-black dark:text-white text-[33px] mb-6">
+        Architecture and Interior design
+      </p>
+    </div>
+
+    {/* Carrusel central con ancho y posición fijos */}
+    <div 
+      className="absolute overflow-hidden z-10"
+      style={{ 
+        left: "640px", 
+        width: "640px", 
+        top: "68px", 
+        height: "calc(873px - 68px)"
+      }}
+    >
+      <Swiper
+        modules={[Autoplay]}
+        autoplay={{ 
+          delay: 2000, 
+          disableOnInteraction: false,
+          pauseOnMouseEnter: false,
+          reverseDirection: false,
+          stopOnLastSlide: false
+        }}
+        spaceBetween={0}
+        slidesPerView={1}
+        loop={true}
+        speed={1500}
+        allowTouchMove={false}
+        simulateTouch={false}
+        className="w-full h-full"
+      >
+        {slideElements}
+      </Swiper>
+    </div>
+
+    {/* Imagen derecha inferior con ancho y posición fijos */}
+    <div 
+      className="group absolute overflow-hidden z-40"
+      style={{ 
+        left: "1280px", 
+        width: "640px", 
+        top: "874px", 
+        bottom: "68px" 
+      }}
+    >
+      <img
+        src={getImageUrl("hoverlg.jpg")}
+        alt="Imagen en grilla"
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-white dark:bg-darkBg transition-opacity duration-1000 opacity-100 group-hover:opacity-0 pointer-events-none z-10"></div>
+    </div>
+
+    {/* Imágenes columna izquierda - parte inferior con ancho fijo */}
+    <div 
+      className="absolute flex flex-row overflow-hidden z-40"
+      style={{ 
+        left: "0", 
+        width: "640px", 
+        top: "874px", 
+        bottom: "68px" 
+      }}
+    >
+      {[5, 6, 7].map((num) => (
+        <div
+          key={num}
+          className="group flex-1 overflow-hidden transition-all duration-500 ease-in-out hover:flex-[2]"
+        >
+          <img
+            src={getImageUrl(`img${num}.jpg`)}
+            alt={`Imagen ${num}`}
+            className="w-full h-full object-cover transition-all duration-500 ease-in-out filter grayscale group-hover:grayscale-0"
+          />
+        </div>
+      ))}
+    </div>
   </div>
 </div>
 

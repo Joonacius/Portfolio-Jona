@@ -5,6 +5,11 @@ import Navbar from "../components/Navbar";
 function Works() {
   const [revealedItems, setRevealedItems] = useState(new Set());
 
+  // Helper function for image paths
+  const getImageUrl = (imagePath) => {
+    return `${import.meta.env.BASE_URL}images/${imagePath}`;
+  };
+
   const handleMobileTouch = (itemName, navigate) => {
     if (revealedItems.has(itemName)) {
       // Segunda pulsación: navegar
@@ -70,7 +75,7 @@ function Works() {
               <Link to={`/works/${name.toLowerCase().replace(/\s+/g, "-")}`} className="block w-full h-full">
                 <div className="group relative w-full h-full overflow-hidden">
                   <img
-                    src={`/images/${img}`}
+                    src={getImageUrl(img)}
                     alt={name}
                     className="w-full h-full object-cover"
                   />
@@ -96,7 +101,7 @@ function Works() {
             >
               <div className="group relative w-full h-full overflow-hidden border border-black dark:border-white">
                 <img
-                  src={`/images/${img}`}
+                  src={getImageUrl(img)}
                   alt={name}
                   className="w-full h-full object-cover"
                 />
@@ -151,7 +156,7 @@ function Works() {
               >
                 <div className="group relative w-full h-full overflow-hidden">
                   <img
-                    src={`/images/${img}`}
+                    src={getImageUrl(img)}
                     alt={name}
                     className="w-full h-full object-cover"
                   />
