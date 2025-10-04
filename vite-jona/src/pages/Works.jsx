@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 
 function Works() {
@@ -41,27 +42,54 @@ function Works() {
     { name: "NEON", img: "neon.jpg", row: 2, col: 4 },
   ];
 
+  // Animaciones Framer Motion para líneas
+  const horizontalLine = (delay = 0) => ({
+    initial: { scaleX: 0, transformOrigin: "left" },
+    animate: { scaleX: 1 },
+    transition: { duration: 1.5, delay, ease: "easeOut" },
+  });
+
+  const verticalLine = (delay = 0) => ({
+    initial: { scaleY: 0, transformOrigin: "top" },
+    animate: { scaleY: 1 },
+    transition: { duration: 1.5, delay, ease: "easeOut" },
+  });
+
   return (
     <div className="relative bg-white dark:bg-darkBg overflow-hidden transition-colors duration-500">
       <Navbar />
 
-      {/* Layout para Desktop (pantallas grandes) */}
-      <div className="hidden lg:block min-h-[1752px]">
-        {/* Líneas horizontales - Desktop */}
+      {/* ------------------ DESKTOP ------------------ */}
+      <div className="hidden lg:block min-h-[1752px] relative">
+        {/* Líneas animadas Desktop */}
         <div className="absolute inset-0 z-20 pointer-events-none">
-          <div className="absolute left-0 right-0 h-[1px] bg-black dark:bg-white" style={{ top: "67px" }} />
-          <div className="absolute left-0 right-0 h-[1px] bg-black dark:bg-white" style={{ top: "606px" }} />
-          <div className="absolute left-0 right-0 h-[1px] bg-black dark:bg-white" style={{ top: "1145px" }} />
-          <div className="absolute left-0 right-0 h-[1px] bg-black dark:bg-white" style={{ bottom: "67px" }} />
+          {/* Horizontales */}
+          {[
+            { top: "67px", delay: 0 },
+            { top: "606px", delay: 0.5 },
+            { top: "1145px", delay: 1 },
+            { bottom: "67px", delay: 1.5 },
+          ].map((line, i) => (
+            <motion.div
+              key={`h-desktop-${i}`}
+              className="absolute left-0 right-0 h-[1px] bg-black dark:bg-white"
+              style={{ top: line.top, bottom: line.bottom }}
+              {...horizontalLine(line.delay)}
+            />
+          ))}
 
-          {/* Líneas verticales - Desktop */}
-          <div className="absolute top-0 bottom-0 w-[1px] bg-black dark:bg-white" style={{ left: "20%" }} />
-          <div className="absolute top-0 bottom-0 w-[1px] bg-black dark:bg-white" style={{ left: "40%" }} />
-          <div className="absolute top-0 bottom-0 w-[1px] bg-black dark:bg-white" style={{ left: "60%" }} />
-          <div className="absolute top-0 bottom-0 w-[1px] bg-black dark:bg-white" style={{ left: "80%" }} />
+          {/* Verticales */}
+          {[20, 40, 60, 80].map((percent, i) => (
+            <motion.div
+              key={`v-desktop-${i}`}
+              className="absolute top-0 bottom-0 w-[1px] bg-black dark:bg-white"
+              style={{ left: `${percent}%` }}
+              {...verticalLine(0.5 + i * 0.5)}
+            />
+          ))}
         </div>
 
-        {/* Grid items - Desktop */}
+        {/* Grid items Desktop */}
         {projects.map(({ name, img, row, col }) => {
           const top = 67 + 539 * row;
           const left = `${col * 20}%`;
@@ -72,7 +100,10 @@ function Works() {
               className="absolute w-[20%] h-[539px] z-10"
               style={{ top: `${top}px`, left }}
             >
-              <Link to={`/works/${name.toLowerCase().replace(/\s+/g, "-")}`} className="block w-full h-full">
+              <Link
+                to={`/works/${name.toLowerCase().replace(/\s+/g, "-")}`}
+                className="block w-full h-full"
+              >
                 <div className="group relative w-full h-full overflow-hidden">
                   <img
                     src={getImageUrl(img)}
@@ -89,9 +120,35 @@ function Works() {
         })}
       </div>
 
-      {/* Layout para Tablet */}
-      <div className="hidden md:block lg:hidden min-h-screen">
-        {/* Grid container para tablet - 2 columnas */}
+      {/* ------------------ TABLET ------------------ */}
+      <div className="hidden md:block lg:hidden min-h-screen relative">
+        {/* Líneas animadas Tablet */}
+        <div className="absolute inset-0 z-20 pointer-events-none">
+          {/* Horizontales */}
+          {[
+            { top: "64px", delay: 0 },
+            { top: "300px", delay: 0.5 },
+            { bottom: "64px", delay: 1 },
+          ].map((line, i) => (
+            <motion.div
+              key={`h-tablet-${i}`}
+              className="absolute left-0 right-0 h-[1px] bg-black dark:bg-white"
+              style={{ top: line.top, bottom: line.bottom }}
+              {...horizontalLine(line.delay)}
+            />
+          ))}
+          {/* Verticales 2 columnas */}
+          {["50%"].map((pos, i) => (
+            <motion.div
+              key={`v-tablet-${i}`}
+              className="absolute top-0 bottom-0 w-[1px] bg-black dark:bg-white"
+              style={{ left: pos }}
+              {...verticalLine(0.5 + i * 0.5)}
+            />
+          ))}
+        </div>
+
+        {/* Grid container Tablet */}
         <div className="grid grid-cols-2 gap-2 p-4 pt-20">
           {projects.map(({ name, img }) => (
             <Link 
@@ -114,34 +171,34 @@ function Works() {
         </div>
       </div>
 
-      {/* Layout para Móvil */}
+      {/* ------------------ MOBILE ------------------ */}
       <div className="block md:hidden min-h-screen relative">
-        {/* Líneas de la grilla para móvil */}
+        {/* Líneas animadas Mobile */}
         <div className="absolute inset-0 z-20 pointer-events-none">
-          {/* Líneas verticales - divide en 3 columnas */}
-          <div className="absolute top-0 bottom-0 w-[1px] bg-black dark:bg-white" style={{ left: "33.33%" }} />
-          <div className="absolute top-0 bottom-0 w-[1px] bg-black dark:bg-white" style={{ left: "66.66%" }} />
-          
-          {/* Líneas horizontales - coincidiendo con bordes de imágenes */}
-          <div className="absolute left-0 right-0 h-[1px] bg-black dark:bg-white" style={{ top: "64px" }} />
-          {[1, 2, 3, 4].map((row) => {
-            const imageHeight = window.innerWidth * 0.3333 * 1.5; // 33.33% del ancho * 1.5 (aspect ratio)
-            const topPosition = 64 + (row * imageHeight);
-            return (
-              <div 
-                key={row}
-                className="absolute left-0 right-0 h-[1px] bg-black dark:bg-white" 
-                style={{ top: `${topPosition}px` }} 
-              />
-            );
-          })}
+          {/* Verticales - 3 columnas */}
+          {[33.33, 66.66].map((percent, i) => (
+            <motion.div
+              key={`v-mobile-${i}`}
+              className="absolute top-0 bottom-0 w-[1px] bg-black dark:bg-white"
+              style={{ left: `${percent}%` }}
+              {...verticalLine(0.5 + i * 0.5)}
+            />
+          ))}
+          {/* Horizontales */}
+          {[64, 200, 336, 472, 608].map((top, i) => (
+            <motion.div
+              key={`h-mobile-${i}`}
+              className="absolute left-0 right-0 h-[1px] bg-black dark:bg-white"
+              style={{ top: `${top}px` }}
+              {...horizontalLine(i * 0.3)}
+            />
+          ))}
         </div>
 
-        {/* Grid container para móvil - 3 columnas */}
+        {/* Grid container Mobile */}
         <div className="grid grid-cols-3 pt-16">
-          {projects.map(({ name, img }, index) => {
+          {projects.map(({ name, img }) => {
             const isRevealed = revealedItems.has(name);
-            
             return (
               <div
                 key={name}
