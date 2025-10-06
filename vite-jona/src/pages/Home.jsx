@@ -26,7 +26,7 @@ function Home() {
     </SwiperSlide>,
   ]);
 
-  // Variantes para las líneas animadas
+  // Variantes para líneas animadas
   const horizontalLine = (delay = 0) => ({
     initial: { scaleX: 0, transformOrigin: "left" },
     animate: { scaleX: 1 },
@@ -241,6 +241,28 @@ function Home() {
             >
               {slideElements}
             </Swiper>
+          </motion.div>
+
+          {/* Imágenes columna izquierda - parte inferior */}
+          <motion.div
+            className="absolute flex flex-row overflow-hidden z-40"
+            style={{ left: "0", width: "640px", top: "874px", bottom: "68px" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2.1, duration: 0.8 }}
+          >
+            {[5, 6, 7].map((num) => (
+              <div
+                key={num}
+                className="group flex-1 overflow-hidden transition-all duration-500 ease-in-out hover:flex-[2]"
+              >
+                <img
+                  src={getImageUrl(`img${num}.jpg`)}
+                  alt={`Imagen ${num}`}
+                  className="w-full h-full object-cover transition-all duration-500 ease-in-out filter grayscale group-hover:grayscale-0"
+                />
+              </div>
+            ))}
           </motion.div>
 
           {/* Imagen derecha inferior */}
